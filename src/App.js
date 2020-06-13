@@ -42,10 +42,13 @@ function App() {
   };
 
   return (
-    <div className="header">
-       <button className="btn btn-outline-info" onClick={load}>Load Users</button>
+    <div className="">
+       <button className="btn btn-outline-info header" onClick={load}>Load Users</button>
+
+        <div className="tablestyle">
         { users[0]==null? "" : <Table change_item={change_item} users={users}/>
         }
+        </div>
     </div>
   );
 }

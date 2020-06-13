@@ -19,6 +19,11 @@
 .header {
   margin: 30px;
 }
+.tablestyle{
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
