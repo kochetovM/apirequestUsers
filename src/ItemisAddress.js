@@ -41,7 +41,7 @@ function ItemisAddress(props) {
         setzipInput(e.target.value);
     };
 
-    const taskSubmit = () => {
+    const taskSubmit = (e) => {
         console.log("Address");
 
         props.change_item(props.id,"address",streetInput,suiteInput,cityInput,zipInput);

@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Table from "./Table";
+import axios from 'axios';
 
 function App() {
 
   const [users, setUsers] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
 
-  const change_item = (id,item_key,newInput,suite,city,zipcode) => {
+
+    const change_item = (id,item_key,newInput,suite,city,zipcode) => {
       let index=0;
 
       users.map( (el,i) => {if(el.id==id) index=i} )
@@ -31,20 +33,26 @@ function App() {
   }
 
   const load = () => {
+    setIsLoading(true);
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(json => {
-              setUsers(json);
-              console.log("Users loaded from db");
-            }
-        );
+    axios({
+        method: 'GET',
+        url: 'https://jsonplaceholder.typicode.com/users',
+    })
+        .then((response) => {
+          setUsers(response.data);
+          setIsLoading(false);
+      });
+
   };
 
   return (
     <div className="">
-       <button className="btn btn-outline-info header" onClick={load}>Load Users</button>
+        {isLoading ? < button className="btn btn-outline-info header" disabled={isLoading} >Loading..</button>
+            : < button className="btn btn-outline-info header" onClick={load}>Load Users</button>
+        }
         <a className="stepahead" href="https://github.com/rusbur/apirequestUsers">github link</a>
+
 
 
         <div className="tablestyle">

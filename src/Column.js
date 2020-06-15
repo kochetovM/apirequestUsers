@@ -6,7 +6,7 @@ const icon_cancel = (<svg className="bi bi-x-circle" width="1em" height="1em" vi
     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
     <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
     <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
-    </svg>);
+</svg>);
 const icon_edit = (<svg className="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
     <path
@@ -27,7 +27,6 @@ function Column(props) {
 
     const [isEditValueOn, setIsEditValueOn] = useState(false);
     const [itemInput, setItemInput] = useState(props.item_value);
-    //const [priorityInput, setPriorityInput] = useState('');
 
     const onTaskChange = (e) => {
         setItemInput(e.target.value);
@@ -46,43 +45,43 @@ function Column(props) {
         console.log(itemInput);
         //console.log(priorityInput);
 
-        props.change_item(props.id,props.item_key,itemInput);
+        props.change_item(props.id, props.item_key, itemInput);
 
         taskReset();
     };
 
     return (
         <td className="">
-            {!isEditValueOn &&  props.item_value
+            {!isEditValueOn && props.item_value
                 /*(props.item_key!='address')?
                     props.item_value :
                     show_address(props.item_value)*/
             }
             {!isEditValueOn &&
-                <span className="stepahead btn-outline-info" onClick={() =>editOn() } >
+            <span className="stepahead btn-outline-info" onClick={() => editOn()}>
                     {icon_edit}
                 </span>
             }
 
-            {isEditValueOn && (props.item_key!='address') &&
-                <form className="addnewitem_style">
-                    <span className="form-group">
-                        <input type="text" className="form-control"
-                               value={itemInput}
-                               onChange={onTaskChange}/>
-                    </span>
-                    <span  className="btn-outline-info "
-                            onClick={taskSubmit}>{icon_submit}
-                    </span>
-                    <span  className="stepahead btn-outline-info"
-                           onClick={taskReset}>{icon_cancel}
-                    </span>
-                </form>
+            {isEditValueOn && (props.item_key != 'address') &&
+            <div className="addnewitem_style">
+                <span className="">
+                    <input type="text" className=""
+                           value={itemInput}
+                           onChange={onTaskChange}/>
+                </span>
+                <span className="btn-outline-info "
+                      onClick={taskSubmit}>{icon_submit}
+                </span>
+                <span className="stepahead btn-outline-info"
+                      onClick={taskReset}>{icon_cancel}
+                </span>
+            </div>
             }
 
-            {(props.item_key=='address') && isEditValueOn &&
-                <ItemisAddress id={props.id} address={props.el} taskReset={taskReset} change_item={props.change_item} />
-             }
+            {(props.item_key == 'address') && isEditValueOn &&
+            <ItemisAddress id={props.id} address={props.el} taskReset={taskReset} change_item={props.change_item}/>
+            }
         </td>
     );
 }
