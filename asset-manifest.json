@@ -1,23 +1,22 @@
 {
   "files": {
     "main.css": "/apirequestUsers/static/css/main.a786f280.chunk.css",
-    "main.js": "/apirequestUsers/static/js/main.6be3645a.chunk.js",
-    "main.js.map": "/apirequestUsers/static/js/main.6be3645a.chunk.js.map",
+    "main.js": "/apirequestUsers/static/js/main.094de5b5.chunk.js",
+    "main.js.map": "/apirequestUsers/static/js/main.094de5b5.chunk.js.map",
     "runtime-main.js": "/apirequestUsers/static/js/runtime-main.c42cf9a5.js",
     "runtime-main.js.map": "/apirequestUsers/static/js/runtime-main.c42cf9a5.js.map",
-    "static/js/2.cdf30c2b.chunk.js": "/apirequestUsers/static/js/2.cdf30c2b.chunk.js",
-    "static/js/2.cdf30c2b.chunk.js.map": "/apirequestUsers/static/js/2.cdf30c2b.chunk.js.map",
+    "static/js/2.229c9730.chunk.js": "/apirequestUsers/static/js/2.229c9730.chunk.js",
+    "static/js/2.229c9730.chunk.js.map": "/apirequestUsers/static/js/2.229c9730.chunk.js.map",
     "index.html": "/apirequestUsers/index.html",
-    "precache-manifest.23e7de5ccc91d4bfd7cd1ec3dcf3de9b.js": "/apirequestUsers/precache-manifest.23e7de5ccc91d4bfd7cd1ec3dcf3de9b.js",
+    "precache-manifest.374b4d606dbd433db548d745899a72fe.js": "/apirequestUsers/precache-manifest.374b4d606dbd433db548d745899a72fe.js",
     "service-worker.js": "/apirequestUsers/service-worker.js",
     "static/css/main.a786f280.chunk.css.map": "/apirequestUsers/static/css/main.a786f280.chunk.css.map",
-    "static/js/2.cdf30c2b.chunk.js.LICENSE.txt": "/apirequestUsers/static/js/2.cdf30c2b.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/apirequestUsers/static/media/logo.5d5d9eef.svg"
+    "static/js/2.229c9730.chunk.js.LICENSE.txt": "/apirequestUsers/static/js/2.229c9730.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c42cf9a5.js",
-    "static/js/2.cdf30c2b.chunk.js",
+    "static/js/2.229c9730.chunk.js",
     "static/css/main.a786f280.chunk.css",
-    "static/js/main.6be3645a.chunk.js"
+    "static/js/main.094de5b5.chunk.js"
   ]
 }
