@@ -5,8 +5,10 @@ import axios from 'axios';
 
 function App() {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [lastEditModeReset, setLastEditModeReset] = useState(null); //Стейт используется для проверки если уже открыта другая ячейка с формой для редакторования
+
 
 
     const change_item = (id,item_key,newInput,suite,city,zipcode) => {
@@ -46,6 +48,17 @@ function App() {
 
   };
 
+
+  const remember_LastEditModeReset = (editModeOnReset) => {
+      if(editModeOnReset!=null) setLastEditModeReset([editModeOnReset]);
+      else setLastEditModeReset(null);
+  } // - запоминаем фукнцию закрытия формы редактирования с ячейки где мы ее открыли
+
+  const runLastEditModeReset = () => {
+      if(lastEditModeReset!=null) lastEditModeReset.map(x => x());
+      setLastEditModeReset(null);
+  } // - вызываем функцию закрытия формы редактирования другой ячейки где открывали а затем сохраняем в стейт нул для обозначения что таких на данный момент больше нет
+
   return (
     <div className="">
         {isLoading ? < button className="btn btn-outline-info header" disabled={isLoading} >Loading..</button>
@@ -53,10 +66,8 @@ function App() {
         }
         <a className="stepahead" href="https://github.com/rusbur/apirequestUsers">github link</a>
 
-
-
         <div className="tablestyle">
-        { users[0]==null? "" : <Table change_item={change_item} users={users}/>
+        { users[0]==null? "" : <Table lastEditModeReset={lastEditModeReset} runLastEditModeReset={runLastEditModeReset} remember_LastEditModeReset={remember_LastEditModeReset} change_item={change_item} users={users}/>
         }
         </div>
     </div>

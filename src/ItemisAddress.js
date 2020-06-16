@@ -45,7 +45,7 @@ function ItemisAddress(props) {
         console.log("Address");
 
         props.change_item(props.id,"address",streetInput,suiteInput,cityInput,zipInput);
-        props.taskReset();
+        props.eidtModeOnReset();
     };
 
     return (
@@ -66,7 +66,7 @@ function ItemisAddress(props) {
                        onClick={taskSubmit}>{icon_submit}
                 </span>
                 <span  className="stepahead btn-outline-info"
-                       onClick={props.taskReset}>{icon_cancel}
+                       onClick={props.eidtModeOnReset}>{icon_cancel}
                 </span>
             </form>
           /*  item_value={el.address["street"]+" "+ el.address["suite"]+" "+el.address["city"]+" "+el.address["zipcode"]
