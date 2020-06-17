@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Column from "./Column";
 
 const icon_edit = (<svg className="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
@@ -25,7 +25,7 @@ function Table(props) {
         <table className="table table-hover table-bordered">
             <thead>
             <tr className="">
-                {Object.keys(props.users[0]).map(  el => <th scope="col">
+                {Object.keys(props.users[0]).map(  (el,i) => <th key={i} scope="col">
                     {el}
 
                     {/*{!isfilterValueOn &&
@@ -40,7 +40,7 @@ function Table(props) {
 
             <tbody>
                 {props.users.map(el =>(
-                    <tr className="">
+                    <tr key={el.id} className="">
                         <th scope="row">{el.id}</th>
                         <Column lastEditModeReset={props.lastEditModeReset} runLastEditModeReset={props.runLastEditModeReset} remember_LastEditModeReset={props.remember_LastEditModeReset} change_item={props.change_item} id={el.id} item_value={el.name} item_key={"name"} />
                         <Column lastEditModeReset={props.lastEditModeReset} runLastEditModeReset={props.runLastEditModeReset} remember_LastEditModeReset={props.remember_LastEditModeReset} change_item={props.change_item} id={el.id} item_value={el.username} item_key={"username"} />

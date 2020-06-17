@@ -47,23 +47,11 @@ function App() {
     }).catch(error => console.log(error));
   };
 
-
-  const remember_LastEditModeReset = (editModeOnReset) => {
-      if(editModeOnReset!=null) setLastEditModeReset([editModeOnReset]);
-      else setLastEditModeReset(null);
-  } // - запоминаем фукнцию закрытия формы редактирования с ячейки где мы ее открыли
-
-  const runLastEditModeReset = () => {
-      if(lastEditModeReset!=null) lastEditModeReset.map(x => x());
-      setLastEditModeReset(null);
-  } // - вызываем функцию закрытия формы редактирования другой ячейки где открывали а затем сохраняем в стейт нул для обозначения что таких на данный момент больше нет
-
   window.onscroll = debounce(() => {
-    if (isLoading) return;
+    if (isLoading)  return;
 
     if ((window.innerHeight + document.documentElement.scrollTop)
-        === (document.documentElement.offsetHeight))
-        { loadMore(); }
+        === (document.documentElement.offsetHeight)) { loadMore(); }
   });
 
   const loadMore = () => {
@@ -83,12 +71,21 @@ function App() {
 
           const newUsers  = users.concat(nextUsers);
           setUsers(newUsers);
-
           setIsLoading(false);
       }).catch(error => console.log(error));
   }
 
-  return (
+    const remember_LastEditModeReset = (editModeOnReset) => {
+        if(editModeOnReset!=null) setLastEditModeReset([editModeOnReset]);
+        else setLastEditModeReset(null);
+    } // - запоминаем фукнцию закрытия формы редактирования с ячейки где мы ее открыли
+
+    const runLastEditModeReset = () => {
+        if(lastEditModeReset!=null) lastEditModeReset.map(x => x());
+        setLastEditModeReset(null);
+    } // - вызываем функцию закрытия формы редактирования другой ячейки где открывали а затем сохраняем в стейт нул для обозначения что таких на данный момент больше нет
+
+    return (
     <div className="">
         {isLoading ? < button className="btn btn-outline-info header" disabled={isLoading} >Loading..</button>
             : < button className="btn btn-outline-info header" onClick={load}>Load Users</button>

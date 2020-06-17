@@ -55,7 +55,7 @@ function Column(props) {
     };
 
     return (
-        <td className="">
+        <td  className="">
             {!isEditValueOn && props.item_value
                 /*(props.item_key!='address')?
                     props.item_value :
