@@ -17,7 +17,6 @@ function Table(props) {
         else { updatedFilters[field] = value;}
 
         props.setFilters(updatedFilters);
-        console.log("updatedFilters",updatedFilters);
         props.apllyFiltersToUsers();
     }
 

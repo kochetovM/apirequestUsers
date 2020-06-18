@@ -25,7 +25,7 @@ function App() {
         setUsers([...newUsers]);
     }
 
-    const apllyFiltersToUsers = () => {
+    const apllyFiltersToUsers = () => { // здесь применяем  фильтры к изначальному списку юзеров
 
         let flagIsFilterEmpty=true;
         for (let x in filters) {
@@ -50,17 +50,13 @@ function App() {
                     newUsers = newUsers.filter((userObject) => userObject[key]["name"].toLowerCase().includes(  filters[key].toLowerCase().trim()  ));
                 }
 
-                if (key == "address") {
-                    console.log("newUsers after address: ",newUsers);
-                }
-
             }
             filterUsers(newUsers);
-            console.log("newUsers: ",newUsers);
         }
     }
 
     const change_item = (id, item_key, newInput, suite, city, zipcode) => {
+        // в этой функции меняем значение поля в массиве списка Юзеров по введеному значению input в таблице
         let index = 0;
         let newlist = initialUsers.map(el => el)
 
@@ -86,7 +82,7 @@ function App() {
         apllyFiltersToUsers();
     }
 
-    const load = () => {
+    const load = () => { // 1ая загрузка юзеров из сервера
         setIsLoading(true);
 
         axios({
@@ -106,14 +102,13 @@ function App() {
 
         if ((window.innerHeight + document.documentElement.scrollTop)
             > (document.documentElement.offsetHeight-20)) {
-            setIsLoading(true);
             loadMore();
-            setIsLoading(false);
         }
     });
 
-    const loadMore = () => {
+    const loadMore = () => { // последующая дозагрузка юзеров из сервера при скролинге
         let id = initialUsers.length;
+        setIsLoading(true);
 
         axios({
             method: 'GET',
@@ -129,6 +124,7 @@ function App() {
                 const newUsers = [...initialUsers,...nextUsers];
                 addUsers(newUsers);
                 apllyFiltersToUsers();
+                setIsLoading(false);
             }).catch(error => console.log(error));
     }
 
@@ -160,7 +156,7 @@ function App() {
             </div>
 
             {isLoading &&
-            <div className="centerFlex">Loading...</div>
+                <div className="centerFlex"> Loading...</div>
             }
 
         </div>
