@@ -17,36 +17,47 @@ function App() {
         filters = newFilters;
     }
 
+    const addUsers = (newUsers) => {
+        setInitialUsers([...newUsers]);
+        console.log(initialUsers);
+    }
+    const filterUsers = (newUsers) => {
+        setUsers([...newUsers]);
+    }
+
     const apllyFiltersToUsers = () => {
 
         let flagIsFilterEmpty=true;
         for (let x in filters) {
-            console.log("not empty");
             flagIsFilterEmpty = false;
             break; }
 
-        if( flagIsFilterEmpty) {
-            console.log("Filter empty");
-            console.log("Filter:",filters);
-            console.log("initialUsers:",initialUsers);
+        if( flagIsFilterEmpty) { //если фильтров нет то возобновляем список
             filterUsers(initialUsers); }
+
         else {
             let newUsers=[...initialUsers];
             for (let key in filters) {
-                newUsers = newUsers.filter((userObject) => userObject[key].toLowerCase().includes(  filters[key].toLowerCase().trim()  ));
+
+                if ((key != "address")&&(key != "company"))
+                    newUsers = newUsers.filter((userObject) => userObject[key].toLowerCase().includes(  filters[key].toLowerCase().trim()  ));
+
+                if (key == "address") {
+                    newUsers = newUsers.filter((el) => (el.address["street"] + " " + el.address["suite"] + " " + el.address["city"] + " " + el.address["zipcode"]).toLowerCase().includes( filters[key].toLowerCase().trim() ));
+                }
+
+                if (key == "company") {
+                    newUsers = newUsers.filter((userObject) => userObject[key]["name"].toLowerCase().includes(  filters[key].toLowerCase().trim()  ));
+                }
+
+                if (key == "address") {
+                    console.log("newUsers after address: ",newUsers);
+                }
+
             }
             filterUsers(newUsers);
             console.log("newUsers: ",newUsers);
         }
-    }
-
-    const addUsers = (newUsers) => {
-        setInitialUsers(newUsers);
-        //setUsers(newUsers);
-        console.log(initialUsers);
-    }
-    const filterUsers = (newUsers) => {
-        setUsers(newUsers);
     }
 
     const change_item = (id, item_key, newInput, suite, city, zipcode) => {
@@ -72,7 +83,6 @@ function App() {
         }
 
         addUsers(newlist);
-        console.log("new list:",newlist);
         apllyFiltersToUsers();
     }
 
@@ -95,14 +105,15 @@ function App() {
         if (isLoading) return;
 
         if ((window.innerHeight + document.documentElement.scrollTop)
-            === (document.documentElement.offsetHeight)) {
+            > (document.documentElement.offsetHeight-20)) {
+            setIsLoading(true);
             loadMore();
+            setIsLoading(false);
         }
-    },2000);
+    });
 
     const loadMore = () => {
         let id = initialUsers.length;
-        setIsLoading(true);
 
         axios({
             method: 'GET',
@@ -118,8 +129,6 @@ function App() {
                 const newUsers = [...initialUsers,...nextUsers];
                 addUsers(newUsers);
                 apllyFiltersToUsers();
-
-                setIsLoading(false);
             }).catch(error => console.log(error));
     }
 

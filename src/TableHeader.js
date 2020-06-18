@@ -28,7 +28,6 @@ function TableHeader(props) {
     }
 
     const onFilterChange = (e) => {
-        //setFilterInput(e.target.value);
         props.addFilter(props.title, e.target.value);
     };
 
@@ -43,12 +42,13 @@ function TableHeader(props) {
                 :
                 (props.title!='id') &&
                 <>
-                    <span className="">
+                    <span className="flex-parent">
                         <input type="text" className=""  onChange={onFilterChange}/>
+                        <span className="flex-child btn-outline-info" onClick={filterInputClose}>
+                            {icon_close}
+                        </span>
                     </span>
-                    <span className="stepahead btn-outline-info" onClick={filterInputClose}>
-                        {icon_close}
-                    </span>
+
                 </>
             }
 

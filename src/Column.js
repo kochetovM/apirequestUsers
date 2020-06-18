@@ -56,26 +56,28 @@ function Column(props) {
 
     return (
         <td  className="">
-            {!isEditValueOn && props.item_value
-            }
             {!isEditValueOn &&
-             <span className="stepahead btn-outline-info" onClick={() => editOn()}>
+            <div className="flex-parent">
+                <span className="flex-child"> {props.item_value} </span>
+
+                <span className="flex-child btn-outline-info" onClick={() => editOn()}>
                     {icon_edit}
-             </span>
+                 </span>
+            </div>
             }
 
             {isEditValueOn && (props.item_key != 'address') &&
-             <div className="addnewitem_style">
+             <div className="flex-parent">
 
                 <span className="">
                     <input type="text" className="" value={itemInput}  onChange={onTaskChange}/>
                 </span>
 
-                <span className="btn-outline-info "
+                <span className="btn-outline-info flex-child "
                       onClick={taskSubmit}>{icon_submit}
                 </span>
 
-                <span className="stepahead btn-outline-info"
+                <span className="flex-child btn-outline-info"
                       onClick={editModeOnReset}>{icon_cancel}
                 </span>
 

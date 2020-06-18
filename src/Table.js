@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import Column from "./Column";
 import TableHeader from "./TableHeader";
 
+const tableHeadTitles = [
+    "id", "name","username", "email","address","phone","website","company" ];
+
 function Table(props) {
 
     const addFilter = (field,value) => {
@@ -24,13 +27,8 @@ function Table(props) {
         <table className="table table-hover table-bordered">
             <thead>
             <tr className="">
-                {Object.keys(props.initialUsers[0]).map((title,index) =>
-                    <TableHeader title={title}
-                                 index={index}
-                                 addFilter={addFilter}
-                    />
-
-                )}
+                {tableHeadTitles.map((title,index) =>
+                    <TableHeader title={title} index={index}   addFilter={addFilter}  /> )}
             </tr>
 
             </thead>

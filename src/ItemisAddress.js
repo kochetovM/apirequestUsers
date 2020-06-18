@@ -50,7 +50,7 @@ function ItemisAddress(props) {
 
     return (
 
-            <form className="addnewitem_style">
+            <form className="">
                 <span className="form-group">
                     <input type="text" className="form-control"
                            value={streetInput} onChange={onStreetChange}/>
