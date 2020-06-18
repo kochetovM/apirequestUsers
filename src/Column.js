@@ -57,9 +57,6 @@ function Column(props) {
     return (
         <td  className="">
             {!isEditValueOn && props.item_value
-                /*(props.item_key!='address')?
-                    props.item_value :
-                    show_address(props.item_value)*/
             }
             {!isEditValueOn &&
              <span className="stepahead btn-outline-info" onClick={() => editOn()}>
