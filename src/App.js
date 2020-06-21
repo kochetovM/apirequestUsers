@@ -4,7 +4,7 @@ import Table from "./Table";
 import axios from 'axios';
 import debounce from "lodash.debounce";
 
-let filters = {};
+let filters = {}; // здесь будем храним любой фильтр, если он пуст значит филтьров нет
 
 function App() {
 
