@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Web link
-https://rusbur.github.io/apirequestUsers/
+https://kochetovm.github.io/apirequestUsers/
 
 ###Screenshots
 
